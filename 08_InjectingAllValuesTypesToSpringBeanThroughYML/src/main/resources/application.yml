@@ -1,0 +1,21 @@
+student:
+  data:
+    id: 1001
+    name: SRINU
+    college-name: SRTECH
+    frnds : 
+      - GOVIND
+      - PK
+      - GOPI
+    phone-nums:
+      - 1234512345
+      - 8985112305
+      - 9502038802
+    marks:
+      m1: 90
+      m2: 92
+      m3: 95
+    address:
+      city: Kanigiri
+      state: AP
+      street-name: TAKARIPALEM
