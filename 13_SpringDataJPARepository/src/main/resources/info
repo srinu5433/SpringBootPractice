@@ -1,0 +1,12 @@
+Q)  Difference between  deleteAllByIdInBatch(Iterable<ID> ids) in jpa repository
+ and  deleteAllById(Iterable<? extends ID> ids) in crud repository ?
+
+ 
+ Ans) deleteAllByIdInBatch  generates a single query having in clause to delete the  records of
+ multiple given id's, it won't generate any exception in case of id is not available.
+ 
+ deleteAllById  generates a multiple delete queries to delete the  records of
+ multiple given id's, it generate the exception in case of id's is not available. 
+ 
+ 
+  
