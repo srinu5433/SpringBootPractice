@@ -2,7 +2,8 @@ package com.srtech.service;
 
 import java.util.List;
 
-import com.srtech.dao.ResultView;
+import com.srtech.dao.StudentDtlsRepo.ResultView;
+
 
 public interface StudentMgmtService {
 	

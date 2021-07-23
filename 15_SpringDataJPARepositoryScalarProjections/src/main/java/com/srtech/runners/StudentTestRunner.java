@@ -11,19 +11,25 @@ import com.srtech.service.StudentMgmtService;
 @Component
 public class StudentTestRunner implements CommandLineRunner {
 
-	Logger logger  = LoggerFactory.getLogger(this.getClass());
-	
-	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	StudentMgmtService studentMgmtService;
-	
+
 	@Override
 	public void run(String... args) throws Exception {
-		
-	//studentMgmtService.fetchDetailsByDeptName("CSE").forEach((student)->{logger.info("{}===,== {}",student.getStudName(),student.getFee());});
-	
-	studentMgmtService.searchDetailsByState("AP").forEach((student)->{logger.info("{}===,== {}",student.getStudName(),student.getFee());});
+
+		// studentMgmtService.fetchDetailsByDeptName("CSE").forEach((student)->{logger.info("{}===,==
+		// {}",student.getStudName(),student.getFee());});
+		logger.info("Method calling has started");
+		try {
+			studentMgmtService.searchDetailsByState("AP").forEach((student) -> {
+				logger.info("{}===,== {}", student.getStudName(), student.getFee());
+			});
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
 
 }

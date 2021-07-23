@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.srtech.dao.ResultView;
 import com.srtech.dao.StudentDtlsRepo;
-import com.srtech.entities.StudentDetails;
+import com.srtech.dao.StudentDtlsRepo.ResultView;
 
 @Service("stdService")
 public class StudentMgmtServiceImpl implements StudentMgmtService {

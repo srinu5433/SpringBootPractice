@@ -1,4 +1,4 @@
-package com.srtech.dao;
+/*package com.srtech.dao;
 
 public interface ResultView {
 	public String getStudName();
@@ -6,3 +6,4 @@ public interface ResultView {
 	
 
 }
+*/

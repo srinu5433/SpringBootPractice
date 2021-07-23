@@ -1,0 +1,20 @@
+This concept is used for always fixed types of columns selection for multiple runs (or calls).
+Steps to implements static Projections:--
+========================================
+
+Step#1:- Define one child interface (inner interface) in Repository interface with any name.
+(OR)
+Create one public interface & use that insideRepositoryInterface as DataType
+
+Step#2:- Copy variable equal getter method (getMethods()) from model class to child interface.
+
+Step#3:- Use that child Interface as ReturnType for findBy() findBy methods.
+
+SYNTAX:
+Interface _______Repository extends JpaRepository<…>{}
+Interface <childType> {
+DataTypegetVariable();
+DataTypegetVariable();
+}
+List<childType>findBy___(…);
+}
