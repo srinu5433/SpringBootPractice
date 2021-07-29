@@ -1,8 +1,12 @@
 package com.srtech.dao;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -43,5 +47,33 @@ public interface StudentDtlsRepo extends JpaRepository<StudentDetails, Long> {
 	@Query("FROM StudentDetails where city in ( :city1, :city2, :city3)")
 	public List<StudentDetails> serachByCityIn(String city1,String city2,String city3);
 
+	// Select operation for Single record with Multiple Columns
+	@Query("select studId,studName,deptName,city,state,fee,pincode FROM StudentDetails where studName = :sname")
+	public Object serachByName(String sname);
+	
+	// Select operation for Single record with few Columns Columns
+	@Query("select studName,deptName,city FROM StudentDetails where studName = :sname")
+	public StudentDetails serachByNameCols(String sname);
+	@Modifying
+	@Query("UPDATE StudentDetails SET deptName=:dept WHERE studId=:sid")
+	public int updateStudentDept(String dept, Long sid);
+	
+	@Modifying
+	@Transactional
+	@Query("DELETE FROM StudentDetails WHERE studId=:sid")
+	public int deleteStudentById(Long sid);
+		
 
+//	Native Sql Queries
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO STUDENT_DETAILS VALUES(?,?,?,?,?,?,?)",nativeQuery = true)
+	public int saveStudent(Long studId,String city,String deptName, double fee, int pincode, String state, String studName);
+	
+	
+	@Modifying
+	@Transactional
+	@Query(value = "CREATE TABLE STUDENT_TEMP (id int,name varchar(20));",nativeQuery = true)
+	public int createTable();
+	
 }
