@@ -1,0 +1,4 @@
+In this case findBy(___) method return type is decided at runtime (i.e It is Generics)
+Format & Syntax:
+<T extends Child interface Type> List<T> findBy___(...,Class<T>clz); //fixed Line
+Note:-- Here “T” is child interface type, provide at runtime.
