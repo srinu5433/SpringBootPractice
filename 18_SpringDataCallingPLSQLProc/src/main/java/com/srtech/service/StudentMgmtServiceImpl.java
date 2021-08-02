@@ -1,11 +1,14 @@
 package com.srtech.service;
 
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
 
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +73,34 @@ public class StudentMgmtServiceImpl implements StudentMgmtService {
 		String result = (String) query.getOutputParameterValue(3);
 
 		return result;
+	}
+
+	@Override
+	public Double AvgFeeByDept(String dept) {
+		
+		Session session = entityManager.unwrap(Session.class);
+		Float fee;
+		fee = session.doReturningWork((con)->{
+			Float fees = null;
+			//CallableStatement callableStatement = con.prepareCall(" {? = CALL FX_GET_DETAILS_BY_DEPT_NAME(?)}");
+			CallableStatement callableStatement = con.prepareCall(" SELECT FX_GET_DETAILS_BY_DEPT_NAME(?)");
+			//callableStatement.registerOutParameter(2, Types.FLOAT);
+			callableStatement.setString(1, dept);
+			
+			ResultSet rs = callableStatement.executeQuery();
+			
+			//callableStatement.getFloat(2);
+			//rs.next();
+			System.out.println("BeforeResult set");
+			while(rs.next())
+			{
+				
+				fees = rs.getFloat(1);
+			}
+			return fees;
+		});
+		
+		return Double.valueOf(fee);
 	}
 
 }

@@ -9,4 +9,5 @@ public interface StudentMgmtService {
 	
 	public List<StudentDetails> getDeatilsByDept(String name);
 	public String checkUserIsValid(String name,String pass);
+	public Double AvgFeeByDept(String dept);
 }

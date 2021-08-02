@@ -19,11 +19,13 @@ public class StudentTestRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		logger.info("==================Student details based on DEPT Name ===================");
-		studentMgmtService.getDeatilsByDept("CSE").forEach(student->logger.info("{}",student));
-		
-		logger.info("==================Authentication Checking ===================");
-		logger.info( "Result is {}",studentMgmtService.checkUserIsValid("raja", "Rani"));
+		/*		logger.info("==================Student details based on DEPT Name ===================");
+				studentMgmtService.getDeatilsByDept("CSE").forEach(student->logger.info("{}",student));
+				
+				logger.info("==================Authentication Checking ===================");
+				logger.info( "Result is {}",studentMgmtService.checkUserIsValid("raja", "Rani"));
+		*/		
+		logger.info("Avg Fee of Student is {}", studentMgmtService.AvgFeeByDept("MECH"));
 		
 	}
 	
